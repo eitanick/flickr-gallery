@@ -39,6 +39,7 @@ class Image extends React.Component {
     return (
       <div
         className="image-root"
+        id="img"
         style={{
           backgroundImage: `url(${this.urlFromDto(this.props.dto)})`,
           width: this.state.size + 'px',
@@ -47,7 +48,7 @@ class Image extends React.Component {
         >
         <div>
           <FontAwesome className="image-icon" name="sync-alt" title="rotate"/>
-          <FontAwesome className="image-icon" name="trash-alt" title="delete" on click={this.remove()}/>
+          <FontAwesome className="image-icon" name="trash-alt" title="delete" on click={()=>img.remove()}/>
           <FontAwesome className="image-icon" name="expand" title="expand"/>
         </div>
       </div>

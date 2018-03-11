@@ -12,8 +12,10 @@ class Image extends React.Component {
   constructor(props) {
     super(props);
     this.calcImageSize = this.calcImageSize.bind(this);
+    this.onClick = this.onClick.bind(this);
     this.state = {
       size: 200
+      deleted:false
     };
   }
 
@@ -26,6 +28,12 @@ class Image extends React.Component {
       size
     });
   }
+  
+  onClick(){
+    this.setState({
+      deleted:true
+    });
+  }
 
   componentDidMount() {
     this.calcImageSize();
@@ -34,11 +42,7 @@ class Image extends React.Component {
   urlFromDto(dto) {
     return `https://farm${dto.farm}.staticflickr.com/${dto.server}/${dto.id}_${dto.secret}.jpg`;
   }
-  
-  delete(){
-    var image_x = document.getElementById('img');
-    img.parentNode.removeChild(image_x);
-  }
+ 
   render() {
     return (
       <div
@@ -52,7 +56,7 @@ class Image extends React.Component {
         >
         <div>
           <FontAwesome className="image-icon" name="sync-alt" title="rotate"/>
-          <FontAwesome className="image-icon" name="trash-alt" title="delete" onclick={delete()}/>
+          <FontAwesome className="image-icon" name="trash-alt" title="delete" onclick={onClick()}/>
           <FontAwesome className="image-icon" name="expand" title="expand"/>
         </div>
       </div>
